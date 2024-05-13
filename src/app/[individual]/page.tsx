@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Navbar from '../Components/NavBar/navBar';
-import instance from '../api/route';
+
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel"
 import Image from 'next/image';
 import Footer from '../Components/NavBar/footer';
+import axios from 'axios';
 
 const Detailpage = ({ params }: { params: { individual: number } }) => {
   const [individualData, setIndividualData] = useState<any>(); // Adjust the type as per your data structure
@@ -20,7 +21,7 @@ const Detailpage = ({ params }: { params: { individual: number } }) => {
 
   const getdata = async () => {
     try {
-      const response = await instance.get(`products/${params.individual}`);
+      const response = await axios.get(`https://dummyjson.com/products/${params.individual}`);
       setIndividualData(response.data);
       setImages(response.data.images)
     } catch (error) {

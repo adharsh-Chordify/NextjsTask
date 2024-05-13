@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Components/NavBar/navBar';
 import axios from 'axios';
-import instance from './api/route';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Card from './Components/NavBar/Card';
@@ -26,7 +25,7 @@ export default function Home() {
 
   const getData = async () => {
     try {
-      const response = await instance.get('products');
+      const response = await axios.get('https://dummyjson.com/products');
       console.log(response.data.products);
       setProductData(response.data.products);
     } catch (error) {
